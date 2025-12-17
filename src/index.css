@@ -1,0 +1,284 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================
+   Justice & Associates - Personal Injury Law Firm
+   Colors: Forest Green, Emerald, Gold accents
+   Bold, modern, trustworthy design
+   ================================ */
+
+@layer base {
+  :root {
+    /* Core brand colors - forest green theme */
+    --forest: 152 50% 12%;
+    --forest-light: 152 40% 18%;
+    --emerald: 160 70% 28%;
+    --emerald-light: 160 60% 38%;
+    --gold: 152 20% 88%;
+    --gold-hover: 160 70% 35%;
+    --cream: 150 15% 95%;
+    --white: 0 0% 100%;
+    --text-dark: 152 45% 10%;
+    --text-muted: 152 15% 45%;
+
+    /* Semantic tokens */
+    --background: 0 0% 100%;
+    --foreground: 152 45% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 152 45% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 152 45% 12%;
+
+    --primary: 152 45% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 30% 96%;
+    --secondary-foreground: 152 45% 12%;
+
+    --muted: 152 20% 94%;
+    --muted-foreground: 152 25% 35%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 152 20% 88%;
+    --input: 152 20% 88%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    /* Section backgrounds */
+    --section-light: 45 30% 97%;
+    --section-dark: 152 45% 18%;
+
+    /* Sidebar */
+    --sidebar-background: 45 30% 96%;
+    --sidebar-foreground: 152 45% 12%;
+    --sidebar-primary: 152 45% 18%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 84% 39%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 152 20% 88%;
+    --sidebar-ring: 160 84% 39%;
+  }
+
+  .dark {
+    --background: 152 45% 10%;
+    --foreground: 0 0% 98%;
+    --card: 152 45% 15%;
+    --card-foreground: 0 0% 98%;
+    --popover: 152 45% 15%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 152 45% 10%;
+    --secondary: 152 35% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 152 35% 20%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 45 93% 47%;
+    --accent-foreground: 152 45% 10%;
+    --border: 152 35% 25%;
+    --input: 152 35% 25%;
+    --ring: 160 84% 39%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', 'Impact', sans-serif;
+    @apply font-bold text-primary uppercase tracking-wide;
+    line-height: 1.2;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    letter-spacing: 0.02em;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  img {
+    @apply max-w-full h-auto block;
+  }
+}
+
+/* ================================
+   Component Utilities
+   ================================ */
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-5 md:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .section-light {
+    @apply bg-secondary;
+  }
+
+  .section-dark {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  /* Page hero styling */
+  .page-hero {
+    @apply py-20 md:py-28 bg-primary text-center text-primary-foreground relative overflow-hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    @apply absolute inset-0 opacity-10;
+    background-image: radial-gradient(circle at 20% 50%, hsl(160 84% 39% / 0.3) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 50%, hsl(45 93% 47% / 0.2) 0%, transparent 50%);
+  }
+
+  .page-hero h1 {
+    @apply mb-4 text-primary-foreground relative;
+  }
+
+  .page-hero p {
+    @apply text-xl text-primary-foreground/80 max-w-2xl mx-auto relative;
+  }
+
+  /* Urgent badge */
+  .urgent-badge {
+    @apply inline-flex items-center gap-2 bg-destructive text-destructive-foreground px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider;
+  }
+
+  /* Stats card */
+  .stat-card {
+    @apply text-center p-8 bg-primary text-primary-foreground rounded-2xl;
+  }
+
+  .stat-number {
+    @apply text-5xl md:text-6xl font-bold text-accent block mb-2;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--forest)) 0%, hsl(var(--forest-light)) 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--emerald)) 0%, hsl(var(--gold)) 100%);
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+}
+
+/* ================================
+   Animations
+   ================================ */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 20px hsl(160 70% 35% / 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 30px hsl(160 70% 35% / 0.5);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Add padding to body for sticky mobile CTA */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 80px;
+  }
+}
+
+/* Form focus states */
+input:focus, textarea:focus, select:focus {
+  @apply ring-2 ring-gold/50 outline-none;
+}
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, hsl(41 65% 58%), hsl(41 80% 70%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
