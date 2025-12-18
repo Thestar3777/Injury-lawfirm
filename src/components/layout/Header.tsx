@@ -44,17 +44,14 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/90" : "bg-transparent"}`}>
-      <div className={`text-white py-1.5 hidden md:block text-xs transition-colors duration-300 ${isScrolled ? "bg-black" : "bg-transparent"}`}>
-      </div>
-
-      <div className={`container-custom transition-colors duration-300 ${isScrolled ? "bg-black/80" : "bg-transparent"}`}>
-        <nav className="flex items-center h-16 pb-0 my-0 mt-0 mb-[10px]">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-sm shadow-lg" : "bg-transparent"}`}>
+      <div className="container-custom">
+        <nav className="flex items-center h-16">
           <Link to="/" className="flex flex-col shrink-0">
-            <span className="text-xl md:text-2xl font-bold text-white font-display tracking-wide">
+            <span className={`text-xl md:text-2xl font-bold font-display tracking-wide transition-colors duration-300 ${isScrolled ? "text-primary" : "text-white"}`}>
               {firmName.toUpperCase()}
             </span>
-            <span className="text-[10px] text-white/60 tracking-widest uppercase">
+            <span className={`text-[10px] tracking-widest uppercase transition-colors duration-300 ${isScrolled ? "text-primary/60" : "text-white/60"}`}>
               Personal Injury Attorneys
             </span>
           </Link>
@@ -63,7 +60,7 @@ const Header = () => {
           <ul className="hidden lg:flex gap-0.5 items-center justify-center flex-1 mx-8">
             {navLinks.map(link => (
               <li key={link.path}>
-                <Link to={link.path} className={`font-medium transition-colors duration-200 px-3 py-1.5 rounded text-sm ${location.pathname === link.path ? "text-emerald-light bg-white/10" : "text-white/90 hover:text-white hover:bg-white/5"}`}>
+                <Link to={link.path} className={`font-bold transition-colors duration-200 px-3 py-1.5 rounded text-sm ${location.pathname === link.path ? "text-emerald-light bg-primary/10" : isScrolled ? "text-primary/90 hover:text-primary hover:bg-primary/5" : "text-white/90 hover:text-white hover:bg-white/5"}`}>
                   {link.name}
                 </Link>
               </li>
@@ -79,7 +76,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="lg:hidden text-white p-2 ml-auto min-h-[44px] min-w-[44px] flex items-center justify-center rounded hover:bg-white/5 transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+          <button className={`lg:hidden p-2 ml-auto min-h-[44px] min-w-[44px] flex items-center justify-center rounded transition-colors ${isScrolled ? "text-primary hover:bg-primary/5" : "text-white hover:bg-white/5"}`} onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
